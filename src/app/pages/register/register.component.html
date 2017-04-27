@@ -1,0 +1,59 @@
+<div class="register-form-container">
+  <h1>注册</h1>
+  <form novalidate [formGroup]="user" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">用户名:</label>
+      <input id="name" type="text" class="form-control" formControlName="name"/>
+      <div *ngIf="user.get('name').hasError('required') && user.get('name').touched" class="alert alert-danger">
+        Name is required
+      </div>
+      <div *ngIf="user.get('name').hasError('minlength') && user.get('name').touched" class="alert alert-danger">
+        MinLength is 2
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">密码:</label>
+      <input id="password" type="password" class="form-control" formControlName="password"/>
+      <div *ngIf="user.get('password').hasError('required') && user.get('password').touched" class="alert alert-danger">
+        Password is required
+      </div>
+    </div>
+
+    <div class="form-group" formGroupName="other">
+      <label for="email">email:</label>
+      <input id="email" type="text" class="form-control"  formControlName="email" />
+
+      <div class="alert alert-danger" *ngIf="user.get('other').get('email').invalid && user.get('other').get('email').touched">
+        MinLength is 2
+      </div>
+      <!--<div *ngIf="user.get('other').get('email').hasError('minlength') && user.get('other').get('email').touched" class="alert alert-danger">-->
+        <!--MinLength is 2-->
+      <!--</div>-->
+
+      <label for="confirm">确认email:</label>
+      <input id="confirm" type="text" class="form-control"  formControlName="confirm" />
+      <!--自定义验证方式-->
+      <div *ngIf="user.get('other').hasError('needInput')" class="alert alert-danger">
+        确认email: is required
+      </div>
+
+      <label for="address">address:</label>
+      <input id="address" type="text" class="form-control" formControlName="address" />
+      <div *ngIf="user.get('other').get('address').hasError('minlength') && user.get('other').get('address').touched" class="alert alert-danger">
+        MinLength is 2
+      </div>
+    </div>
+
+
+    <div class="register-form-button">
+      <button type="submit" class="btn btn-primary" [disabled]="user.invalid">确认</button>
+      <button type="button" class="btn btn-primary" >登录</button>
+    </div>
+
+  </form>
+
+
+  <br>
+  {{ user.value | json}}
+</div>
+

@@ -1,0 +1,64 @@
+<br>
+
+<div >
+  <div class="ui-g">
+    <div class="ui-g-4">
+      <button pButton type='button' label="添加" (click)="add()"></button>
+      <button pButton type='button' label="审批" (click)="approve()"></button>
+      <button pButton type='button' label="查看" (click)="view()"></button>
+
+    </div>
+  </div>
+</div>
+
+<br>
+
+<p-panel header="Title" [toggleable]="true">
+  <div class="ui-g">
+    <div class="ui-g-6">
+      <div class="ui-grid-col-4">
+        车牌号:
+      </div>
+      <div class="ui-grid-col-6">
+        <input pInputText type="text" />
+      </div>
+    </div>
+    <div class="ui-g-6">
+      <div class="ui-grid-col-4">
+        车辆所属公司:
+      </div>
+      <div class="ui-grid-col-6">
+        <input pInputText type="text"  />
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="ui-g">
+
+    <div class="ui-g-12" style="text-align: center">
+      <button pButton type='button' label="查询" (click)="add()"></button>
+      <button pButton type='button' label="重置" (click)="add()"></button>
+    </div>
+
+  </div>
+</p-panel>
+
+<br>
+
+
+
+<p-dialog header="Title" [(visible)]="display">
+
+    <router-outlet></router-outlet>
+
+</p-dialog>
+
+
+
+
+
+
+
+

@@ -1,0 +1,106 @@
+<p>
+  add works!
+</p>
+
+<form [formGroup]="filter" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="enterdate">入职时间</label>
+
+    <p-calendar id="enterdate" appendTo="body" formControlName="startEnterDate"
+                appCalendarCompareSmallTo="endEnterDate"
+                ></p-calendar>
+    至
+    <p-calendar  appendTo="body" formControlName="endEnterDate"
+                 appCalendarCompareBigTo="startEnterDate"
+                 ></p-calendar>
+
+
+    <div class="alert alert-danger" *ngIf="filter.get('startEnterDate')?.hasError('noSmallTo')">
+      startEnderDate 应该小于 startEnderDate
+    </div>
+
+    <div class="alert alert-danger" *ngIf="filter.get('endEnterDate')?.hasError('noBigTo')">
+      endEnderDate 应该大于 startEnderDate
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="leaveDate">离职时间</label>
+    <p-calendar id="leaveDate" appendTo="body" formControlName="startLeaveDate"
+                appCalendarRange='{ "target":"endLeaveDate","start":true}'
+    ></p-calendar>
+    至
+    <p-calendar  appendTo="body" formControlName="endLeaveDate"
+                 appCalendarRange='{ "target":"startLeaveDate", "start": false}'
+    ></p-calendar>
+
+    {{filter.get('startLeaveDate')?.hasError('calendarRangeError')}}
+    {{filter.get('endLeaveDate')?.hasError('calendarRangeError')}}
+
+
+    <div class="alert alert-danger" *ngIf="filter.get('startLeaveDate')?.hasError('calendarRangeError')">
+      startLeaveDate 应该小于 endLeaveDate
+    </div>
+
+    <div class="alert alert-danger" *ngIf="filter.get('endLeaveDate')?.hasError('calendarRangeError')">
+      endLeaveDate 应该大于 startLeaveDate
+    </div>
+
+  </div>
+
+  <!--appOtherIfRequired 设置在这里,是因为当只有使用这个input时，才会触发验证，才会影响到其他input-->
+  <div class="form-group">
+    <label for="country">country:</label>
+    <input id="country" type="text" class="form-control"  formControlName="country"  appIfRequired="city" reverse="true"/>
+  </div>
+
+  <!--如果country有输入，则city必填-->
+  <div class="form-group">
+    <label for="city">city:</label>
+    <input #city id="city" type="text" class="form-control"  formControlName="city" appIfRequired="country" [tooltip]="myTooltip"/>
+  </div>
+
+  <div class="alert alert-danger" *ngIf="filter.get('city').hasError('ifRequired')">
+    city 为必填项
+  </div>
+
+  <div class="form-group">
+    <label for="address">address:</label>
+    <span tooltip="必填项" [tooltipDisabled]="filter.get('address').valid" [tooltipAnimation]="true" tooltipPlacement="top">
+      <input id="address" type="text" class="form-control"  formControlName="address"/>
+    </span>
+  </div>
+
+
+  <button pButton type="submit" label="提交" [disabled]="filter.invalid"></button>
+
+
+
+  <br>
+  {{filter.value | json}}
+
+</form>
+
+
+<tooltip-content #myTooltip >
+  city 为必填项
+</tooltip-content>
+
+
+
+<!--<span tooltip="content to be shown in the tooltip"-->
+      <!--[tooltipDisabled]="!filter.get('city').hasError('ifRequired')"-->
+      <!--[tooltipAnimation]="true"-->
+      <!--tooltipPlacement="top">-->
+    <!--element on which this tooltip is applied.-->
+<!--</span>-->
+
+
+
+
+
+
+
+
+
+

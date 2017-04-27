@@ -1,0 +1,32 @@
+<div class="wrapper" [ngClass]="{'sidebar-inactive-l':menuInactiveDesktop, 'sidebar-active-m':menuActiveMobile}">
+  <div class="topbar clearfix">
+    <!-- 隐藏侧边栏按钮 -->
+    <a id="omega-menu-button" href="#" (click)="toggleMenu($event)">
+      <span class="fa fa-bars"></span>
+    </a>
+
+  </div>
+
+  <!-- 侧边栏-->
+  <div class="sidebar" (click)="onMenuClick($event)">
+    <div #scroller class="nano">
+      <div class="nano-content sidebar-scroll-content">
+        <!-- logo -->
+        <div class="logo">
+          <img src="assets/images/logo.png" alt="" width="113">
+        </div>
+
+        <!-- menu -->
+        <app-sidebar></app-sidebar>
+      </div>
+    </div>
+  </div>
+
+  <!--主体内容区域-->
+  <div class="main">
+
+    <router-outlet></router-outlet>
+
+  </div>
+
+</div>
