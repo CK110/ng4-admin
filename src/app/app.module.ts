@@ -5,6 +5,9 @@ import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {CustomEventBusService, TestService} from './providers/custom-event-bus.service';
+import {EventBusService} from './providers/event-bus.service';
 
 @NgModule({
   declarations: [
@@ -14,9 +17,14 @@ import { AppComponent } from './app.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    EventBusService,
+    { provide: EventBusService, useClass: CustomEventBusService },
+    // TestService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
