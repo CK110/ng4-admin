@@ -3,7 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { CurdRoutingModule } from './curd-routing.module';
 import {CurdComponent} from './curd.component';
-import {ButtonModule, CalendarModule, DialogModule, DropdownModule, InputTextModule, PanelModule} from 'primeng/primeng';
+import {
+  AutoCompleteModule, ButtonModule, CalendarModule, ChipsModule, DialogModule, DropdownModule, InputTextModule,
+  PanelModule
+} from 'primeng/primeng';
 import { AddComponent } from './add/add.component';
 import {ViewComponent} from './view/view.component';
 import {RefreshBusService} from './provider/refresh-bus.service';
@@ -13,6 +16,7 @@ import {CalendarCompareBigDirective, CalendarCompareSmallDirective} from '../../
 import {IfRequiredDirective} from '../../directive/if-required.directive';
 import {CalendarRangeDirective} from '../../directive/calendar-range.directive';
 import {TooltipModule} from 'ngx-tooltip';
+import {ValidateTooltipModule} from '../../components/validate-tooltip/validate-tooltip.module';
 
 const ComponentModule = [
   PanelModule,
@@ -21,7 +25,10 @@ const ComponentModule = [
   DropdownModule,
   DialogModule,
   CalendarModule,
-  TooltipModule
+  TooltipModule,
+  ValidateTooltipModule,
+  AutoCompleteModule,
+  ChipsModule
 ];
 
 const Directives = [

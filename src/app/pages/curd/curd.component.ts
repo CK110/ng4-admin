@@ -49,11 +49,11 @@ export class CurdComponent implements OnInit , OnDestroy {
   }
 
   view() {
-    this.router.navigate(['./view']);
+    this.router.navigate(['./view'], {relativeTo: this.route});
 
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 }

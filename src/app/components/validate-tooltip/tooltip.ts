@@ -85,6 +85,14 @@ export class Tooltip implements OnDestroy {
     }
   }
 
+
+  ngDoCheck() {
+    if (!this.hasError) {
+      this.hide();
+    }
+  }
+
+
   show() {
     if (!this.text || this.disabled) {
       return;
@@ -94,7 +102,6 @@ export class Tooltip implements OnDestroy {
     if (!this.container) {
       this.create();
     }else {
-      console.log(this.domHandler.findSingle(this.container, '.ui-tooltip-text'));
       this.domHandler.findSingle(this.container, '.ui-tooltip-text').innerText = this.text;
     }
     const offset = (this.appendTo !== 'body') ? {left: 0, top: 0} : this.domHandler.getOffset(this.el.nativeElement);

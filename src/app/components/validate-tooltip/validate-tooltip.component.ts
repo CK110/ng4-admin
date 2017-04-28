@@ -8,29 +8,19 @@ import {ValidateMsgService} from './validate-msg.service';
   styleUrls: ['./validate-tooltip.component.scss'],
   providers: [ValidateMsgService]
 })
-export class ValidateTooltipComponent implements OnInit, AfterViewChecked, OnChanges, DoCheck {
+export class ValidateTooltipComponent implements DoCheck {
 
 
-  @Input() position: string; // 位置
+  @Input() position: any = 'top'; // 位置
 
   @Input() control: FormControl;
 
-  errorMessage = '22';
-
-
+  errorMessage: string;
 
   constructor(private vms: ValidateMsgService) {
   }
 
-  ngOnInit() {
-    this.position = 'top';
 
-
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-
-  }
 
   ngDoCheck() {
     // console.log(this.control.errors);
@@ -41,13 +31,5 @@ export class ValidateTooltipComponent implements OnInit, AfterViewChecked, OnCha
 
     }
   }
-
-  ngAfterViewChecked(): void {
-
-
-
-  }
-
-
 
 }

@@ -4,7 +4,31 @@
 
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
 
-  <p-calendar formControlName="date"></p-calendar>
 
+  <app-validate-tooltip [control]="myForm.get('date')" position="top">
+    <p-calendar formControlName="date"></p-calendar>
+  </app-validate-tooltip>
+
+
+
+  <app-validate-tooltip [control]="myForm.get('city')" position="right">
+    <input pInputText formControlName="city">
+  </app-validate-tooltip>
+
+  <app-validate-tooltip [control]="myForm.get('start')" position="top">
+    <input pInputText formControlName="start">
+  </app-validate-tooltip>
+
+  <app-validate-tooltip [control]="myForm.get('city')" position="right">
+    <input pInputText formControlName="city">
+  </app-validate-tooltip>
+
+  <app-validate-tooltip [control]="myForm.get('country')" position="right">
+    <p-autoComplete formControlName="country" ></p-autoComplete>
+  </app-validate-tooltip>
+
+  <app-validate-tooltip [control]="myForm.get('address')" position="right">
+    <p-chips formControlName="address"></p-chips>
+  </app-validate-tooltip>
 
 </form>
