@@ -9,7 +9,7 @@ import {EventBusService} from '../../providers/event-bus.service';
   templateUrl: './curd.component.html',
   styleUrls: ['./curd.component.scss'],
 })
-export class CurdComponent implements OnInit , OnDestroy{
+export class CurdComponent implements OnInit , OnDestroy {
 
   display = false;
 
@@ -49,7 +49,7 @@ export class CurdComponent implements OnInit , OnDestroy{
   }
 
   view() {
-    this.router.navigate(['./view'], {relativeTo: this.route});
+    this.router.navigate(['./view']);
 
   }
 

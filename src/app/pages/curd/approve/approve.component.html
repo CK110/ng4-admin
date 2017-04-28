@@ -2,27 +2,40 @@
   approve works!
 </p>
 
-<!--<form [formGroup]="myForm" (ngSubmit)="onSubmit()">-->
-  <!--<div class="form-group">-->
-    <!--<label for="country">country:</label>-->
-    <!--<input id="country" type="text" class="form-control"  formControlName="country"  />-->
-  <!--</div>-->
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="country">country:</label>
+    <input id="country" type="text" class="form-control"  formControlName="country" pTooltip="Enter your username" tooltipPosition="top" />
+  </div>
 
-  <!--<div class="form-group">-->
-    <!--<label for="city">city:</label>-->
-    <!--&lt;!&ndash;<span tooltip="error tips"&ndash;&gt;-->
-          <!--&lt;!&ndash;tooltipDisabled]="false"&ndash;&gt;-->
-          <!--&lt;!&ndash;[tooltipAnimation]="true"&ndash;&gt;-->
-          <!--&lt;!&ndash;tooltipPlacement="top">&ndash;&gt;-->
-      <!--<input id="city" type="text" class="form-control"  formControlName="city"/>-->
-    <!--&lt;!&ndash;</span>&ndash;&gt;-->
-  <!--</div>-->
+  <div class="form-group">
+    <label for="city">city:</label>
 
-  <!--<button pButton type="submit" label="提交"></button>-->
+      <input id="city" type="text" class="form-control"  formControlName="city"
+             pTooltip="Enter your username" tooltipPosition="top" [tooltipDisabled]="myForm.get('city').valid"/>
 
-<!--</form>-->
+  </div>
+
+  <div class="form-group" >
+    <label for="address">address:</label>
+    <app-validate-tooltip [control]="myForm.get('address')">
+      <input id ='address' type="text" formControlName="address" pInputText >
+    </app-validate-tooltip>
+  </div>
+
+  <div class="form-group" >
+    <label for="email">email:</label>
+    <app-validate-tooltip [control]="myForm.get('email')">
+      <input id ='email' type="text" formControlName="email" pInputText>
+    </app-validate-tooltip>
+
+  </div>
+
+  <button pButton type="submit" label="提交" [disabled]="myForm.invalid" ></button>
+
+</form>
 
 
-<!--<br>-->
+<br>
 
 

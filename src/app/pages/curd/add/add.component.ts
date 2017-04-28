@@ -52,7 +52,7 @@ export class AddComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     console.log('AddComponent destory');
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 
 
