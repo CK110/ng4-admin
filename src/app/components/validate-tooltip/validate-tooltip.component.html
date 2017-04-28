@@ -1,0 +1,6 @@
+<div #container1 style="display:inline-block;position:relative">
+  <div  pTooltip="{{errorMessage}}" tooltipPosition="top" [appendTo]="container1"
+         [hasError]="control.invalid">
+    <ng-content></ng-content>
+  </div>
+</div>
