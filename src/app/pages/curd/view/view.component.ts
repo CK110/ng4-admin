@@ -11,6 +11,9 @@ export class ViewComponent implements OnInit {
 
   myForm: FormGroup;
 
+  display: boolean = false;
+
+
   constructor(private fb: FormBuilder) {
     console.log('...ViewComponent constructor');
   }
@@ -25,8 +28,13 @@ export class ViewComponent implements OnInit {
       start: ['', [Validators.minLength(4)]],
       country: ['', [Validators.required, Validators.minLength(2)]],
       address: ['', [Validators.required, Validators.minLength(2)]],
+      end: ['', [Validators.required, Validators.minLength(2)]]
     });
 
+  }
+
+  showDialog() {
+    this.display = true;
   }
 
 }

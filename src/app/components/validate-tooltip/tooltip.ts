@@ -1,14 +1,12 @@
-import {NgModule, Directive, ElementRef, OnDestroy, HostBinding, HostListener, Input} from '@angular/core';
+import {NgModule, Directive, ElementRef, OnDestroy, HostBinding, HostListener, Input, DoCheck} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DomHandler} from 'primeng/primeng';
 
 @Directive({
   selector: '[pTooltip]',
-  host: {
-  },
   providers: [DomHandler]
 })
-export class Tooltip implements OnDestroy {
+export class TooltipDirective implements OnDestroy, DoCheck {
 
   @Input('pTooltip') text: string;
 
@@ -32,34 +30,6 @@ export class Tooltip implements OnDestroy {
 
   constructor(public el: ElementRef, public domHandler: DomHandler) {}
 
-  // @HostListener('mouseenter', ['$event'])
-  // onMouseEnter(e: Event) {
-  //   if (this.tooltipEvent === 'hover') {
-  //     this.show();
-  //   }
-  // }
-  //
-  // @HostListener('mouseleave', ['$event'])
-  // onMouseLeave(e: Event) {
-  //   if (this.tooltipEvent === 'hover') {
-  //     this.hide();
-  //   }
-  // }
-
-  // @HostListener('focus', ['$event'])
-  // onFocus(e: Event) {
-  //   if (this.tooltipEvent === 'focus') {
-  //     this.show();
-  //   }
-  // }
-  //
-  // @HostListener('blur', ['$event'])
-  // onBlur(e: Event) {
-  //   if (this.tooltipEvent === 'focus') {
-  //     this.hide();
-  //   }
-  // }
-
   @HostListener('mouseenter', ['$event'])
   onMouseEnter(e: Event) {
       this.show();
@@ -70,18 +40,23 @@ export class Tooltip implements OnDestroy {
       this.hide();
   }
 
-  @HostListener('blur', ['$event'])
-  onBlur(e: Event) {
-      this.hide();
+  @HostListener('focusin', ['$event'])
+  onFocusIn(e: Event) {
+    this.show();
+  }
+
+  @HostListener('focusout', ['$event'])
+  onFocusOut(e: Event) {
+    this.hide();
   }
 
   @HostListener('keyup', ['$event'])
   onKeyup() {
     if (this.hasError) {
-        this.show();
+      this.show();
 
     }else {
-        this.hide();
+      this.hide();
     }
   }
 
@@ -91,7 +66,6 @@ export class Tooltip implements OnDestroy {
       this.hide();
     }
   }
-
 
   show() {
     if (!this.text || this.disabled) {
@@ -196,7 +170,7 @@ export class Tooltip implements OnDestroy {
 
 @NgModule({
   imports: [CommonModule],
-  exports: [Tooltip],
-  declarations: [Tooltip]
+  exports: [TooltipDirective],
+  declarations: [TooltipDirective]
 })
 export class TooltipModule { }

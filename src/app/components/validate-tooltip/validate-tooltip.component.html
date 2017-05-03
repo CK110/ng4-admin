@@ -1,6 +1,8 @@
-<div #container1 style="display:inline-block;position:relative">
-  <div  pTooltip="{{errorMessage}}" [tooltipPosition]="position" [appendTo]="container1"
-         [hasError]="control.invalid">
+<div #container style="display:inline-block;position:relative">
+  <div pTooltip="{{errorMessage}}" [tooltipPosition]="position" [appendTo]="container" [hasError]="control.invalid">
     <ng-content></ng-content>
   </div>
+
 </div>
+
+

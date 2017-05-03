@@ -2,33 +2,45 @@
   view works!
 </p>
 
-<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+<button type="text" (click)="showDialog()" pButton icon="fa-external-link-square" label="Show"></button>
 
 
-  <app-validate-tooltip [control]="myForm.get('date')" position="top">
-    <p-calendar formControlName="date"></p-calendar>
-  </app-validate-tooltip>
+<p-dialog [(visible)]="display" width="600" height="400" [contentStyle]="{height: '400px' }">
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group" >
+      <label >date:</label>
+      <app-validate-tooltip [control]="myForm.get('date')" position="right" >
+        <p-calendar formControlName="date" [appendTo]="'body'"></p-calendar>
+      </app-validate-tooltip>
+    </div>
+
+    <div class="form-group" >
+      <label >start:</label>
+      <app-validate-tooltip [control]="myForm.get('start')" position="top">
+        <input pInputText formControlName="start">
+      </app-validate-tooltip>
+    </div>
+
+    <div class="form-group" >
+      <label >city:</label>
+      <app-validate-tooltip [control]="myForm.get('city')" position="right">
+        <input pInputText formControlName="city">
+      </app-validate-tooltip>
+    </div>
+
+    <div class="form-group" >
+      <label >country:</label>
+      <app-validate-tooltip [control]="myForm.get('country')" position="right">
+        <p-autoComplete formControlName="country" ></p-autoComplete>
+      </app-validate-tooltip>
+    </div>
+
+    <app-validate-tooltip [control]="myForm.get('address')" position="right">
+      <p-chips formControlName="address"></p-chips>
+    </app-validate-tooltip>
+
+  </form>
+</p-dialog>
 
 
-
-  <app-validate-tooltip [control]="myForm.get('city')" position="right">
-    <input pInputText formControlName="city">
-  </app-validate-tooltip>
-
-  <app-validate-tooltip [control]="myForm.get('start')" position="top">
-    <input pInputText formControlName="start">
-  </app-validate-tooltip>
-
-  <app-validate-tooltip [control]="myForm.get('city')" position="right">
-    <input pInputText formControlName="city">
-  </app-validate-tooltip>
-
-  <app-validate-tooltip [control]="myForm.get('country')" position="right">
-    <p-autoComplete formControlName="country" ></p-autoComplete>
-  </app-validate-tooltip>
-
-  <app-validate-tooltip [control]="myForm.get('address')" position="right">
-    <p-chips formControlName="address"></p-chips>
-  </app-validate-tooltip>
-
-</form>

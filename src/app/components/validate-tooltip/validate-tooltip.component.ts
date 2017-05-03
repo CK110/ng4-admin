@@ -1,4 +1,4 @@
-import {AfterViewChecked, Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {AfterContentChecked, Component, Input} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {ValidateMsgService} from './validate-msg.service';
 
@@ -8,7 +8,8 @@ import {ValidateMsgService} from './validate-msg.service';
   styleUrls: ['./validate-tooltip.component.scss'],
   providers: [ValidateMsgService]
 })
-export class ValidateTooltipComponent implements DoCheck {
+export class ValidateTooltipComponent implements AfterContentChecked {
+
 
 
   @Input() position: any = 'top'; // 位置
@@ -18,18 +19,14 @@ export class ValidateTooltipComponent implements DoCheck {
   errorMessage: string;
 
   constructor(private vms: ValidateMsgService) {
+
   }
 
-
-
-  ngDoCheck() {
-    // console.log(this.control.errors);
-
-    for (const propertyName in this.control.errors) {
-      this.errorMessage = this.vms.getValidatorErrorMessage(propertyName, this.control.errors[propertyName]);
-      // console.log(this.errorMessage);
-
+  ngAfterContentChecked(): void {
+    if (this.control.errors) {
+      Object.keys(this.control.errors).map(key => {
+        this.errorMessage = this.vms.getValidatorErrorMessage(key, this.control.errors[key]);
+      });
     }
   }
-
 }

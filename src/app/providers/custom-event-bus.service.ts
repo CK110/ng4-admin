@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {EventBusService} from './event-bus.service';
 import {Subject} from 'rxjs/Subject';
 
-// @Injectable()
+@Injectable()
 export class CustomEventBusService extends EventBusService {
 
   private _other = new Subject<any>();
@@ -26,13 +26,6 @@ export class CustomEventBusService extends EventBusService {
 
 
 }
-
-
-
-
-
-
-
 
 
 /**

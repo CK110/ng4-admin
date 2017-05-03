@@ -8,7 +8,7 @@ import {TooltipModule} from './tooltip';
     CommonModule,
     TooltipModule
   ],
-  declarations: [ValidateTooltipComponent],
-  exports: [ValidateTooltipComponent]
+  declarations: [ValidateTooltipComponent, ],
+  exports: [ValidateTooltipComponent, ]
 })
 export class ValidateTooltipModule { }
