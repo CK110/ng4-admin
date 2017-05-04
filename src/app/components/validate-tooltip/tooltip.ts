@@ -6,7 +6,7 @@ import {DomHandler} from 'primeng/primeng';
   selector: '[pTooltip]',
   providers: [DomHandler]
 })
-export class TooltipDirective implements OnDestroy, DoCheck {
+export class TooltipDirective implements OnDestroy {
 
   @Input('pTooltip') text: string;
 
@@ -56,13 +56,6 @@ export class TooltipDirective implements OnDestroy, DoCheck {
       this.show();
 
     }else {
-      this.hide();
-    }
-  }
-
-
-  ngDoCheck() {
-    if (!this.hasError) {
       this.hide();
     }
   }
@@ -153,6 +146,7 @@ export class TooltipDirective implements OnDestroy, DoCheck {
       this.domHandler.appendChild(this.container, this.el.nativeElement);
     else
       this.domHandler.appendChild(this.container, this.appendTo);
+
   }
 
   ngOnDestroy() {

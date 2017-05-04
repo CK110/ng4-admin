@@ -1,4 +1,4 @@
-import {AfterContentChecked, Component, Input} from '@angular/core';
+import {AfterContentChecked, Component, DoCheck, Input, KeyValueDiffer, KeyValueDiffers} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {ValidateMsgService} from './validate-msg.service';
 
@@ -8,7 +8,7 @@ import {ValidateMsgService} from './validate-msg.service';
   styleUrls: ['./validate-tooltip.component.scss'],
   providers: [ValidateMsgService]
 })
-export class ValidateTooltipComponent implements AfterContentChecked {
+export class ValidateTooltipComponent implements AfterContentChecked,DoCheck {
 
 
 
@@ -18,11 +18,19 @@ export class ValidateTooltipComponent implements AfterContentChecked {
 
   errorMessage: string;
 
-  constructor(private vms: ValidateMsgService) {
+  differ: any;
 
+  constructor(private vms: ValidateMsgService, private differs: KeyValueDiffers) {
+    this.differ = differs.find([]).create(null);
+  }
+
+  ngDoCheck() {
+      const changes = this.differ.diff(this.control);
   }
 
   ngAfterContentChecked(): void {
+
+
     if (this.control.errors) {
       Object.keys(this.control.errors).map(key => {
         this.errorMessage = this.vms.getValidatorErrorMessage(key, this.control.errors[key]);
