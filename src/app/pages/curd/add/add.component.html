@@ -29,22 +29,12 @@
   <div class="form-group">
     <label for="leaveDate">离职时间</label>
     <app-validate-tooltip [control]="filter.get('startLeaveDate')">
-
-      <p-calendar id="leaveDate" appendTo="body" formControlName="startLeaveDate"
-                  appCalendarRange='{ "target":"endLeaveDate","start":true}'
-      ></p-calendar>
+      <p-calendar id="leaveDate" appendTo="body" formControlName="startLeaveDate"></p-calendar>
     </app-validate-tooltip>
     至
     <app-validate-tooltip [control]="filter.get('endLeaveDate')">
-      <p-calendar  appendTo="body" formControlName="endLeaveDate"
-                   appCalendarRange='{ "target":"startLeaveDate", "start": false}'
-      ></p-calendar>
+      <p-calendar  appendTo="body" formControlName="endLeaveDate"></p-calendar>
     </app-validate-tooltip>
-
-
-    {{filter.get('startLeaveDate')?.hasError('calendarRangeError')}}
-    {{filter.get('endLeaveDate')?.hasError('calendarRangeError')}}
-
 
     <div class="alert alert-danger" *ngIf="filter.get('startLeaveDate')?.hasError('calendarRangeError')">
       startLeaveDate 应该小于 endLeaveDate

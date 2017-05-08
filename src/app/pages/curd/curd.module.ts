@@ -13,9 +13,9 @@ import {RefreshBusService} from './provider/refresh-bus.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CalendarRangeDirective} from '../../theme/directive/calendar-range.directive';
 import {TooltipModule} from 'ngx-tooltip';
-import {ValidateMsgService} from '../../theme/components/validate-tooltip/validate-msg.service';
-import {ValidateTooltipModule} from '../../theme/components/validate-tooltip/validate-tooltip.module';
-// import {ValidateMsgService, ValidateTooltipModule} from 'ngx-validate-tooltip';
+import {ValidateTooltipModule} from '../../theme/components/validate-tooltip/validate-tooltip/validate-tooltip.module';
+import {ValidateMsgService} from '../../theme/components/validate-tooltip/providers/validate-msg.service';
+
 
 const ComponentModule = [
   PanelModule,
