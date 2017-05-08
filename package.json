@@ -30,6 +30,7 @@
     "ngx-bootstrap": "^1.6.6",
     "ngx-tooltip": "0.0.9",
     "ngx-uploader": "^2.2.8",
+    "ngx-validate-tooltip": "^1.0.1",
     "primeng": "^4.0.0-rc.3",
     "rxjs": "^5.1.0",
     "zone.js": "0.8.5"

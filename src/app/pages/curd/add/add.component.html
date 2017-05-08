@@ -7,19 +7,19 @@
     <label for="enterdate">入职时间</label>
 
     <p-calendar id="enterdate" appendTo="body" formControlName="startEnterDate"
-                appCalendarCompareSmallTo="endEnterDate"
+                appCalendarRange='{ "target":"endEnterDate","start":true}'
                 ></p-calendar>
     至
     <p-calendar  appendTo="body" formControlName="endEnterDate"
-                 appCalendarCompareBigTo="startEnterDate"
+                 appCalendarRange='{ "target":"startEnterDate", "start": false}'
                  ></p-calendar>
 
 
-    <div class="alert alert-danger" *ngIf="filter.get('startEnterDate')?.hasError('noSmallTo')">
+    <div class="alert alert-danger" *ngIf="filter.get('startEnterDate')?.hasError('calendarRangeError')">
       startEnderDate 应该小于 startEnderDate
     </div>
 
-    <div class="alert alert-danger" *ngIf="filter.get('endEnterDate')?.hasError('noBigTo')">
+    <div class="alert alert-danger" *ngIf="filter.get('endEnterDate')?.hasError('calendarRangeError')">
       endEnderDate 应该大于 startEnderDate
     </div>
   </div>
@@ -77,7 +77,7 @@
 
 
   <br>
-  {{filter.value | json}}
+  <!--{{filter.value | json}}-->
 
 </form>
 

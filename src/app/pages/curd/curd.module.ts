@@ -11,12 +11,9 @@ import { AddComponent } from './add/add.component';
 import {ViewComponent} from './view/view.component';
 import {RefreshBusService} from './provider/refresh-bus.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ValidateExpandDirective} from '../../directive/validate-expand.directive';
-import {CalendarCompareBigDirective, CalendarCompareSmallDirective} from '../../directive/calendar-compare.directive';
-import {IfRequiredDirective} from '../../directive/if-required.directive';
 import {CalendarRangeDirective} from '../../directive/calendar-range.directive';
 import {TooltipModule} from 'ngx-tooltip';
-import {ValidateTooltipModule} from '../../components/validate-tooltip/validate-tooltip.module';
+import {ValidateMsgService, ValidateTooltipModule} from 'ngx-validate-tooltip';
 
 const ComponentModule = [
   PanelModule,
@@ -32,10 +29,6 @@ const ComponentModule = [
 ];
 
 const Directives = [
-  ValidateExpandDirective,
-  CalendarCompareSmallDirective,
-  CalendarCompareBigDirective,
-  IfRequiredDirective,
   CalendarRangeDirective
 ];
 
@@ -54,6 +47,6 @@ const Directives = [
     ViewComponent,
     Directives
   ],
-  providers: [RefreshBusService]
+  providers: [RefreshBusService, ValidateMsgService]
 })
 export class CurdModule { }

@@ -15,9 +15,6 @@ export class CalendarRangeDirective implements Validator {
 
   constructor(@Attribute('appCalendarRange') public appCalendarRange: any) { }
 
-  // target= this.appCalendarRange.target
-  // start = this.appCalendarRange.start
-
   validate(c: AbstractControl): ValidationErrors | any {
     const self = c.value;
     const target = c.root.get(JSON.parse(this.appCalendarRange)['target']);
