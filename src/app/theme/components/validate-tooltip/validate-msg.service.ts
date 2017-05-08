@@ -32,7 +32,8 @@ export class ValidateMsgService {
       'invalidName' : '请输入姓名',
       'invalidUnnormal' : '输入值不能为空和包含其他非法字符',
 
-      'minlength': `最短长度 ${validatorValue.requiredLength}个字符`
+      'minlength': `最短长度 ${validatorValue.requiredLength}个字符`,
+      calendarRangeError: '开始时间小于结束时间'
     };
 
     return config[validatorName];

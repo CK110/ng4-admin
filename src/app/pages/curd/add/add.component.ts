@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
-import {EventBusService} from '../../../providers/event-bus.service';
+import {EventBusService} from '../../../theme/providers/event-bus.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 export class Filter {

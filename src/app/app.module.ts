@@ -6,8 +6,8 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {CustomEventBusService, TestService} from './providers/custom-event-bus.service';
-import {EventBusService} from './providers/event-bus.service';
+import {CustomEventBusService, TestService} from './theme/providers/custom-event-bus.service';
+import {EventBusService} from './theme/providers/event-bus.service';
 
 @NgModule({
   declarations: [

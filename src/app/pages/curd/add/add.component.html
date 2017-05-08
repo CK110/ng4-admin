@@ -4,35 +4,43 @@
 
 <form [formGroup]="filter" (ngSubmit)="onSubmit()">
   <div class="form-group">
-    <label for="enterdate">入职时间</label>
+    <!--<label for="enterdate">入职时间</label>-->
+    <!--<app-validate-tooltip [control]="filter.get('startEnterDate')">-->
+      <!--<p-calendar id="enterdate" appendTo="body" formControlName="startEnterDate"-->
+                  <!--appCalendarRange='{ "target":"endEnterDate","start":true}'-->
+                  <!--&gt;</p-calendar>-->
+    <!--</app-validate-tooltip>-->
+    <!--至-->
+    <!--<app-validate-tooltip [control]="filter.get('endEnterDate')">-->
+      <!--<p-calendar  appendTo="body" formControlName="endEnterDate"-->
+                   <!--appCalendarRange='{ "target":"startEnterDate", "start": false}'-->
+      <!--&gt;</p-calendar>-->
+    <!--</app-validate-tooltip>-->
 
-    <p-calendar id="enterdate" appendTo="body" formControlName="startEnterDate"
-                appCalendarRange='{ "target":"endEnterDate","start":true}'
-                ></p-calendar>
-    至
-    <p-calendar  appendTo="body" formControlName="endEnterDate"
-                 appCalendarRange='{ "target":"startEnterDate", "start": false}'
-                 ></p-calendar>
+    <!--<div class="alert alert-danger" *ngIf="filter.get('startEnterDate')?.hasError('calendarRangeError')">-->
+      <!--startEnderDate 应该小于 startEnderDate-->
+    <!--</div>-->
 
-
-    <div class="alert alert-danger" *ngIf="filter.get('startEnterDate')?.hasError('calendarRangeError')">
-      startEnderDate 应该小于 startEnderDate
-    </div>
-
-    <div class="alert alert-danger" *ngIf="filter.get('endEnterDate')?.hasError('calendarRangeError')">
-      endEnderDate 应该大于 startEnderDate
-    </div>
+    <!--<div class="alert alert-danger" *ngIf="filter.get('endEnterDate')?.hasError('calendarRangeError')">-->
+      <!--endEnderDate 应该大于 startEnderDate-->
+    <!--</div>-->
   </div>
 
   <div class="form-group">
     <label for="leaveDate">离职时间</label>
-    <p-calendar id="leaveDate" appendTo="body" formControlName="startLeaveDate"
-                appCalendarRange='{ "target":"endLeaveDate","start":true}'
-    ></p-calendar>
+    <app-validate-tooltip [control]="filter.get('startLeaveDate')">
+
+      <p-calendar id="leaveDate" appendTo="body" formControlName="startLeaveDate"
+                  appCalendarRange='{ "target":"endLeaveDate","start":true}'
+      ></p-calendar>
+    </app-validate-tooltip>
     至
-    <p-calendar  appendTo="body" formControlName="endLeaveDate"
-                 appCalendarRange='{ "target":"startLeaveDate", "start": false}'
-    ></p-calendar>
+    <app-validate-tooltip [control]="filter.get('endLeaveDate')">
+      <p-calendar  appendTo="body" formControlName="endLeaveDate"
+                   appCalendarRange='{ "target":"startLeaveDate", "start": false}'
+      ></p-calendar>
+    </app-validate-tooltip>
+
 
     {{filter.get('startLeaveDate')?.hasError('calendarRangeError')}}
     {{filter.get('endLeaveDate')?.hasError('calendarRangeError')}}

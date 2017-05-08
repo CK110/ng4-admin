@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {RefreshBusService} from './provider/refresh-bus.service';
 import {Subscription} from 'rxjs/Subscription';
-import {EventBusService} from '../../providers/event-bus.service';
+import {EventBusService} from '../../theme/providers/event-bus.service';
 
 @Component({
   selector: 'app-curd',
