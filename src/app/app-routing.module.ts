@@ -1,11 +1,24 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {Routes, RouterModule, PreloadingStrategy, Route} from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+
+export class AppCustomPreloader implements PreloadingStrategy {
+
+  preload(route: Route, load: Function): Observable<any> {
+
+    return route.data && route.data['preload'] ? load() : Observable.of(null);
+
+  }
+}
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'pages', pathMatch: 'full' },
   {
     path: 'login',
-    loadChildren: './pages/login/login.module#LoginModule'
+    loadChildren: './pages/login/login.module#LoginModule',
+    data: {preload: true}  // 预加载
   },
   {
     path: 'register',
@@ -20,7 +33,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: AppCustomPreloader })],
+  exports: [RouterModule],
+  providers: [AppCustomPreloader]
 })
 export class AppRoutingModule { }

@@ -38,7 +38,14 @@ export class CalendarRangeDirective implements Validator {
       };
     }
 
-    target.setErrors(null);
+    if(start && target && target.value !== '' && self <= target.value ){
+      target.setErrors(null);
+    }
+
+    if(!start && target && target.value !== '' && self >= target.value ){
+      target.setErrors(null);
+    }
+
     return null;
   }
 

@@ -56,8 +56,7 @@ export class PagesComponent implements AfterViewInit, OnDestroy {
       if (this.menuInactiveDesktop) {
         this.menuActiveMobile = false;
       }
-    }
-    else {
+    } else {
       this.menuActiveMobile = !this.menuActiveMobile;
       if (this.menuActiveMobile) {
         this.menuInactiveDesktop = false;
@@ -77,8 +76,7 @@ export class PagesComponent implements AfterViewInit, OnDestroy {
 
     if (this.topMenuActive) {
       this.hideTopMenu();
-    }
-    else {
+    } else {
       this.topMenuActive = true;
     }
 
