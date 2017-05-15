@@ -38,11 +38,11 @@ export class CalendarRangeDirective implements Validator {
       };
     }
 
-    if(start && target && target.value !== '' && self <= target.value ){
+    if (start && target && target.value !== '' && self <= target.value ) {
       target.setErrors(null);
     }
 
-    if(!start && target && target.value !== '' && self >= target.value ){
+    if (!start && target && target.value !== '' && self >= target.value ) {
       target.setErrors(null);
     }
 
