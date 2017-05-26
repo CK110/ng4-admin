@@ -30,7 +30,11 @@
     <app-validate-tooltip [control]="myForm.get('email')" position="right">
       <input id ='email' type="text" formControlName="email" pInputText >
     </app-validate-tooltip>
+  </div>
 
+  <div class="form-group" >
+    <label for="start">start:</label>
+      <input id ='start' type="text" formControlName="start" pInputText appValidateTooltipDirective>
   </div>
 
   <div #container style="display:inline-block;position:relative">
@@ -42,6 +46,6 @@
 </form>
 
 
-<br>
+
 
 

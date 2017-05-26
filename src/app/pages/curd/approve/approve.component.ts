@@ -23,7 +23,8 @@ export class ApproveComponent implements OnInit {
       country: ['', [Validators.required, Validators.minLength(2)]],
       city: ['', [Validators.required, Validators.minLength(2)]],
       address: ['', [Validators.required, Validators.minLength(2)]],
-      email: ['', [Validators.required, Validators.minLength(4)]]
+      email: ['', [Validators.required, Validators.minLength(4)]],
+      start: ['', [Validators.required, Validators.minLength(4)]]
     });
   }
 

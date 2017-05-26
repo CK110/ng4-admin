@@ -18,13 +18,13 @@
 
     <div class="form-group" ngModelGroup="other">
       <label for="email">email:</label>
-      <input id="email" type="text" class="form-control"  name="email" #email="ngModel" required ngModel/>
+      <input id="email" type="text" class="form-control"  name="email" #email="ngModel"  ngModel/>
       <div *ngIf ="email.errors?.required && email.touched" class="alert alert-danger">
         email is required
       </div>
 
       <label for="address">address:</label>
-      <input id="address" type="text" class="form-control" name="address" #address="ngModel" required ngModel/>
+      <input id="address" type="text" class="form-control" name="address" #address="ngModel"  ngModel/>
       <div *ngIf ="address.errors?.required && address.touched" class="alert alert-danger">
         address is required
       </div>
