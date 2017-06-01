@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import {Routes, RouterModule, PreloadingStrategy, Route} from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import {AuthGuardService} from './service/guard/auth-guard.service';
 
 export class AppCustomPreloader implements PreloadingStrategy {
 
@@ -14,7 +15,7 @@ export class AppCustomPreloader implements PreloadingStrategy {
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'pages', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'login',
     loadChildren: './pages/login/login.module#LoginModule',
@@ -22,11 +23,11 @@ const routes: Routes = [
   },
   {
     path: 'register',
-    loadChildren: './pages/register/register.module#RegisterModule'
+    loadChildren: './pages/register/register.module#RegisterModule',
   },
   {
     path: 'pages',
-    loadChildren: './pages/pages.module#PagesModule'
+    loadChildren: './pages/pages.module#PagesModule',
   },
   { path: '**', redirectTo: 'pages' },
 

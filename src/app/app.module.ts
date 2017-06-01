@@ -8,6 +8,9 @@ import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CustomEventBusService, TestService} from './theme/providers/custom-event-bus.service';
 import {EventBusService} from './theme/providers/event-bus.service';
+import {AuthGuardService} from './service/guard/auth-guard.service';
+import {AuthService} from './service/auth.service';
+import {AccessGuardService} from './service/guard/access-guard.service';
 
 @NgModule({
   declarations: [
@@ -22,8 +25,12 @@ import {EventBusService} from './theme/providers/event-bus.service';
   ],
   providers: [
     EventBusService,
-    { provide: EventBusService, useClass: CustomEventBusService },
-    // TestService
+    // { provide: EventBusService, useClass: CustomEventBusService },
+
+    AuthService,
+    AuthGuardService, // 是否登录
+    AccessGuardService // 防止登录用户拼接猜测url
+
   ],
   bootstrap: [AppComponent]
 })
